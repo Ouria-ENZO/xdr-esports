@@ -4,379 +4,1103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#191a1c">
-<meta name="description" content="XDR ESPORTS — Beyond the Ordinary.">
-<title>XDR ESPORTS | Beyond the Ordinary</title>
+<meta name="theme-color" content="#111315">
+<meta name="description" content="XDR ESPORTS — Beyond the Ordinary. Independent esports organization.">
+<title>XDR ESPORTS — Beyond the Ordinary</title>
 
 <style>
 :root {
-  --bg:#191a1c;
-  --surface:#222426;
-  --silver:#e5e3df;
-  --muted:#999a98;
-  --accent:#947653;
-  --line:rgba(255,255,255,.09);
+  --bg:#111315;
+  --panel:#191c1e;
+  --panel2:#202326;
+  --white:#e9e8e4;
+  --muted:#929594;
+  --bronze:#9b8060;
+  --line:rgba(255,255,255,.10);
+  --max:1200px;
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{background:var(--bg);color:var(--silver);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
 a{color:inherit;text-decoration:none}
-.container{width:min(1160px,88%);margin:auto}
+button{font:inherit}
+.container{width:min(var(--max),88%);margin:auto}
+::selection{background:var(--bronze);color:#111315}
 
-/* NAVIGATION */
-header{
- position:fixed;width:100%;top:0;z-index:100;
- padding:25px 0;transition:.3s;
- background:rgba(25,26,28,.25);
- backdrop-filter:blur(14px);
- border-bottom:1px solid transparent
+/* HEADER */
+
+.header{
+  position:fixed;
+  top:0;left:0;width:100%;
+  z-index:100;
+  padding:23px 0;
+  border-bottom:1px solid transparent;
+  transition:.3s ease;
+  background:rgba(17,19,21,.30);
+  backdrop-filter:blur(15px);
 }
-header.scrolled{
- padding:18px 0;background:rgba(25,26,28,.94);
- border-color:rgba(148,118,83,.25)
+.header.scrolled{
+  padding:16px 0;
+  background:rgba(17,19,21,.94);
+  border-color:var(--line);
 }
-.nav{display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:20px;font-weight:900;letter-spacing:3px}
-.logo span{color:var(--accent);font-size:11px;letter-spacing:2px}
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{font-size:10px;letter-spacing:2px;color:#c5c5c1;transition:.3s}
-.nav-links a:hover{color:var(--accent)}
-.lang-btn{background:transparent;border:1px solid rgba(148,118,83,.5);color:var(--silver);padding:9px 13px;cursor:pointer;font-size:11px}
-.menu-btn{display:none;background:none;color:white;border:none;font-size:25px;cursor:pointer}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+.brand{
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+.brand small{
+  display:block;
+  color:var(--bronze);
+  font-size:8px;
+  letter-spacing:4px;
+  margin-top:4px;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:32px;
+}
+.nav-links a{
+  font-size:10px;
+  color:#c0c1bd;
+  letter-spacing:2px;
+  transition:.25s;
+}
+.nav-links a:hover{color:var(--bronze)}
+.nav-right{display:flex;align-items:center;gap:15px}
+.lang{
+  color:var(--white);
+  background:transparent;
+  border:1px solid rgba(155,128,96,.55);
+  padding:9px 12px;
+  font-size:10px;
+  cursor:pointer;
+}
+.menu-toggle{
+  display:none;
+  border:0;
+  background:none;
+  color:var(--white);
+  font-size:25px;
+  cursor:pointer;
+}
 
 /* HERO */
+
 .hero{
- min-height:100vh;display:flex;align-items:center;
- position:relative;overflow:hidden;
- background:radial-gradient(ellipse at 78% 50%,rgba(148,118,83,.12),transparent 38%),linear-gradient(120deg,#191a1c,#202224)
+  min-height:850px;
+  height:100vh;
+  max-height:1100px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 76% 49%,rgba(155,128,96,.13),transparent 34%),
+    linear-gradient(120deg,#111315 20%,#171a1c 100%);
 }
 .hero::before{
- content:"";position:absolute;inset:0;
- background:repeating-linear-gradient(120deg,transparent 0,transparent 70px,rgba(255,255,255,.012) 71px);
- pointer-events:none
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.22;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:75px 75px;
+  mask-image:linear-gradient(to right,transparent,black);
 }
-.hero-content{
- display:grid;grid-template-columns:1fr 1fr;
- align-items:center;gap:30px;position:relative;z-index:2;padding-top:75px
+.hero::after{
+  content:"";
+  position:absolute;
+  width:600px;height:600px;
+  border:1px solid rgba(155,128,96,.10);
+  border-radius:50%;
+  right:-240px;top:15%;
 }
-.eyebrow{color:var(--accent);letter-spacing:4px;font-size:10px;margin-bottom:28px}
-.hero h1{font-size:clamp(65px,9vw,112px);line-height:.9;letter-spacing:-7px;font-weight:900}
-.hero h1 span{display:block;font-size:23px;letter-spacing:11px;margin-top:20px;color:#b7b6b0}
-.tagline{font-size:17px;letter-spacing:4px;margin-top:40px}
-.description{color:var(--muted);font-size:13px;line-height:2;max-width:440px;margin-top:20px}
-.hero-buttons{display:flex;gap:15px;margin-top:32px;flex-wrap:wrap}
-.btn{display:inline-block;padding:14px 21px;border:1px solid var(--accent);font-size:10px;letter-spacing:2px;transition:.3s}
-.btn.primary{background:var(--accent);color:#191a1c;font-weight:bold}
-.btn:hover{background:#b08d65;color:#191a1c;transform:translateY(-3px)}
+.hero-inner{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:30px;
+  position:relative;
+  z-index:2;
+  padding-top:65px;
+}
+.kicker{
+  color:var(--bronze);
+  font-size:10px;
+  letter-spacing:4px;
+  margin-bottom:28px;
+}
+.hero h1{
+  font-size:clamp(75px,10vw,145px);
+  font-weight:900;
+  line-height:.82;
+  letter-spacing:-9px;
+}
+.hero h1 span{
+  display:block;
+  font-size:clamp(22px,3vw,35px);
+  letter-spacing:15px;
+  color:#b8b8b3;
+  margin-top:25px;
+}
+.hero-slogan{
+  font-size:14px;
+  letter-spacing:5px;
+  margin-top:45px;
+}
+.hero-description{
+  max-width:440px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:2.1;
+  margin-top:20px;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  margin-top:35px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:15px 21px;
+  font-size:10px;
+  letter-spacing:2px;
+  border:1px solid rgba(155,128,96,.7);
+  transition:.3s;
+}
+.btn-primary{
+  background:var(--bronze);
+  color:#111315;
+  font-weight:bold;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  border-color:#c2a37c;
+}
+.btn-primary:hover{background:#b99b74}
+.arrow{font-size:17px}
 
-/* SIGNATURE STRUCTURE */
-.art{height:440px;display:grid;place-items:center;position:relative}
-.orbit{width:310px;height:310px;border:1px solid rgba(148,118,83,.3);border-radius:50%;position:absolute;box-shadow:0 0 90px rgba(148,118,83,.08)}
-.structure{width:230px;height:320px;position:relative;transform:rotateY(-20deg) rotateX(7deg);filter:drop-shadow(20px 25px 30px #090a0b)}
-.structure::before{
- content:"";position:absolute;inset:0;
- clip-path:polygon(50% 0,100% 22%,82% 88%,50% 100%,18% 88%,0 22%);
- background:linear-gradient(115deg,#4c5051,#d4d0c5 17%,#414548 36%,#202326 56%,#aaa69c 75%,#35393b)
+/* HERO EMBLEM */
+
+.hero-art{
+  min-height:490px;
+  display:grid;
+  place-items:center;
+  position:relative;
 }
-.structure::after{
- content:"";position:absolute;inset:16% 27%;
- clip-path:polygon(50% 0,100% 23%,80% 88%,50% 100%,20% 88%,0 23%);
- background:linear-gradient(135deg,#181a1c,#55595a,#191a1c);
- border:1px solid var(--accent)
+.emblem{
+  width:min(420px,100%);
+  aspect-ratio:1;
+  position:relative;
+  display:grid;
+  place-items:center;
 }
-.structure-line{
- position:absolute;z-index:3;height:65%;width:2px;
- background:linear-gradient(transparent,#c4a47d,transparent);
- left:50%;top:18%;transform:rotate(18deg);
- box-shadow:0 0 18px rgba(148,118,83,.6)
+.emblem svg{
+  width:100%;
+  height:100%;
+  overflow:visible;
+  filter:drop-shadow(0 25px 35px rgba(0,0,0,.45));
+}
+.emblem-caption{
+  position:absolute;
+  bottom:3px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:9px;
+  letter-spacing:5px;
+  color:#888b88;
+  white-space:nowrap;
+}
+.hero-index{
+  position:absolute;
+  right:0;
+  bottom:55px;
+  color:#777b79;
+  font-size:9px;
+  letter-spacing:3px;
+  writing-mode:vertical-rl;
 }
 
-/* SECTIONS */
-section:not(.hero){padding:110px 0}
-.section-label{color:var(--accent);font-size:10px;letter-spacing:4px;margin-bottom:17px}
-.section-title{font-size:clamp(32px,5vw,52px);letter-spacing:-2px}
-.section-desc{color:var(--muted);max-width:460px;font-size:13px;line-height:2;margin-top:20px}
+/* TICKER */
+
+.ticker{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:#151719;
+  overflow:hidden;
+}
+.ticker-track{
+  display:flex;
+  justify-content:space-around;
+  gap:45px;
+  padding:20px 0;
+  white-space:nowrap;
+  color:#aaa9a2;
+  font-size:10px;
+  letter-spacing:4px;
+}
+.ticker-track span::before{
+  content:"✦";
+  color:var(--bronze);
+  margin-right:20px;
+}
+
+/* GENERAL SECTIONS */
+
+section.content-section{padding:115px 0}
+.section-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  margin-bottom:45px;
+}
+.section-label{
+  color:var(--bronze);
+  font-size:10px;
+  letter-spacing:4px;
+  margin-bottom:17px;
+}
+.section-title{
+  font-size:clamp(34px,5vw,58px);
+  line-height:1.05;
+  letter-spacing:-2px;
+  font-weight:800;
+}
+.section-number{
+  color:#565b5a;
+  font-size:13px;
+  letter-spacing:3px;
+}
 
 /* ABOUT */
-.about{background:linear-gradient(180deg,transparent,rgba(255,255,255,.018),transparent)}
-.about-content{display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:70px}
-.about-mark{font-size:clamp(90px,14vw,160px);font-weight:900;letter-spacing:-12px;color:rgba(255,255,255,.055)}
-.about-text{color:#b9b9b4;font-size:15px;line-height:2.2}
-.about-text strong{color:var(--silver)}
 
-/* MANIFEST ROSTER */
-.roster-grid{
- display:grid;grid-template-columns:repeat(2,1fr);
- gap:18px;margin-top:45px
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:75px;
+  align-items:center;
+}
+.about-visual{
+  min-height:350px;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(155,128,96,.16),transparent 55%),
+    linear-gradient(145deg,#202426,#151719);
+  border:1px solid var(--line);
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+}
+.about-visual::before,
+.about-visual::after{
+  content:"";
+  position:absolute;
+  width:250px;height:250px;
+  border:1px solid rgba(155,128,96,.25);
+  transform:rotate(45deg);
+}
+.about-visual::after{width:180px;height:180px}
+.about-visual strong{
+  font-size:85px;
+  letter-spacing:-8px;
+  z-index:2;
+  color:#d1d0c9;
+}
+.about-copy{color:#aeb0ac;font-size:14px;line-height:2.2}
+.about-copy strong{color:var(--white)}
+.about-copy .section-title{color:var(--white);margin-bottom:25px}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:35px;
+}
+.stat{
+  padding:20px 12px;
+  background:var(--panel);
+  border-top:2px solid var(--bronze);
+}
+.stat strong{
+  display:block;
+  font-size:29px;
+  color:var(--white);
+}
+.stat span{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:1px;
+  margin-top:8px;
+}
+
+/* ROSTER */
+
+.roster-section{
+  background:#151719;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.roster-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:25px;
+  margin-bottom:38px;
+}
+.roster-heading h2{
+  font-size:clamp(38px,6vw,70px);
+  letter-spacing:-3px;
+}
+.roster-heading p{
+  color:var(--bronze);
+  font-size:10px;
+  letter-spacing:3px;
+  margin-top:12px;
+}
+.roster-layout{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:18px;
+}
+.roster-feature{
+  min-height:440px;
+  background:
+    radial-gradient(ellipse at 50% 42%,rgba(155,128,96,.18),transparent 45%),
+    linear-gradient(150deg,#25292b,#191c1e);
+  border:1px solid var(--line);
+  padding:35px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  position:relative;
+  overflow:hidden;
+}
+.roster-feature::before{
+  content:"M";
+  position:absolute;
+  right:-5px;
+  top:30px;
+  font-size:300px;
+  font-weight:900;
+  line-height:1;
+  color:rgba(255,255,255,.035);
+}
+.roster-feature-top,
+.roster-feature-bottom{position:relative;z-index:2}
+.roster-tag{
+  display:inline-block;
+  border:1px solid rgba(155,128,96,.6);
+  padding:9px 12px;
+  color:#c5a783;
+  font-size:9px;
+  letter-spacing:3px;
+}
+.roster-feature h3{
+  font-size:clamp(40px,6vw,72px);
+  letter-spacing:-3px;
+  margin-bottom:12px;
+}
+.roster-feature-bottom p{
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:3px;
+}
+.player-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 .player{
- padding:30px;min-height:170px;
- background:linear-gradient(145deg,#272a2c,#1e2022);
- border:1px solid var(--line);transition:.3s
+  flex:1;
+  min-height:100px;
+  display:grid;
+  grid-template-columns:55px 1fr auto;
+  align-items:center;
+  gap:15px;
+  padding:20px 24px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  transition:.25s;
 }
-.player:hover{transform:translateY(-5px);border-color:rgba(148,118,83,.5)}
-.player-role{color:var(--accent);font-size:11px;letter-spacing:3px}
-.player h3{font-size:25px;letter-spacing:1px;margin-top:25px}
+.player:hover{
+  border-color:rgba(155,128,96,.6);
+  transform:translateX(4px);
+}
+.player-number{
+  color:var(--bronze);
+  font-size:12px;
+  letter-spacing:2px;
+}
+.player-name{
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+.player-role{
+  color:#999b97;
+  font-size:9px;
+  letter-spacing:2px;
+  text-align:right;
+}
+
+/* VALUES */
+
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-top:45px;
+}
+.value-card{
+  padding:30px;
+  min-height:200px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  transition:.3s;
+}
+.value-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(155,128,96,.5);
+}
+.value-no{
+  color:var(--bronze);
+  font-size:11px;
+  letter-spacing:3px;
+}
+.value-card h3{
+  font-size:19px;
+  margin-top:45px;
+  letter-spacing:1px;
+}
+.value-card p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.9;
+  margin-top:12px;
+}
 
 /* NEWS */
-.news{background:#1e2022}
-.news-card{border-top:1px solid rgba(148,118,83,.3);border-bottom:1px solid rgba(148,118,83,.3);padding:32px 0;margin-top:35px}
-.news-card h3{font-size:20px;font-weight:500}
-.news-card p{font-size:12px;color:var(--muted);margin-top:10px}
+
+.news-section{background:#151719}
+.news-card{
+  display:grid;
+  grid-template-columns:160px 1fr auto;
+  align-items:center;
+  gap:25px;
+  padding:30px;
+  background:var(--panel);
+  border:1px solid var(--line);
+}
+.news-date{
+  color:var(--bronze);
+  font-size:10px;
+  letter-spacing:2px;
+}
+.news-card h3{font-size:20px}
+.news-card p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:10px;
+  line-height:1.8;
+}
+.news-arrow{font-size:25px;color:var(--bronze)}
 
 /* CONTACT */
-.contact-box{border:1px solid rgba(148,118,83,.35);padding:45px;background:linear-gradient(120deg,rgba(148,118,83,.09),transparent)}
-.contact-box h2{font-size:clamp(27px,4vw,42px);margin-top:15px}
+
+.contact-panel{
+  padding:60px;
+  background:
+    radial-gradient(ellipse at 90% 50%,rgba(155,128,96,.14),transparent 40%),
+    linear-gradient(110deg,#202426,#171a1c);
+  border:1px solid rgba(155,128,96,.35);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:35px;
+}
+.contact-panel h2{
+  font-size:clamp(30px,5vw,52px);
+  line-height:1.1;
+}
+.contact-panel p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:2;
+  margin-top:17px;
+  max-width:470px;
+}
 
 /* FOOTER */
-footer{border-top:1px solid var(--line);padding:30px 0;color:#777;font-size:10px;letter-spacing:2px}
-.footer-content{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+.footer{
+  padding:35px 0;
+  border-top:1px solid var(--line);
+  background:#0e1011;
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.footer-brand{font-size:19px;font-weight:900;letter-spacing:3px}
+.footer-brand span{color:var(--bronze)}
+.footer-copy{
+  color:#777b79;
+  font-size:9px;
+  letter-spacing:2px;
+}
+.back-top{
+  color:var(--bronze);
+  font-size:10px;
+  letter-spacing:2px;
+}
 
 /* RTL */
-[dir="rtl"] body{font-family:Tahoma,Arial,sans-serif}
-[dir="rtl"] .hero h1,[dir="rtl"] .tagline{letter-spacing:normal}
-[dir="rtl"] .eyebrow,[dir="rtl"] .section-label{letter-spacing:1px}
 
-/* MOBILE */
-@media(max-width:800px){
- .hero-content{grid-template-columns:1fr;padding-top:120px}
- .hero{min-height:950px}
- .art{height:330px}
- .structure{transform:scale(.8) rotateY(-20deg)}
- .orbit{width:260px;height:260px}
- .about-content{grid-template-columns:1fr;gap:25px}
- .roster-grid{grid-template-columns:1fr}
- .player{min-height:140px}
+[dir="rtl"] body{font-family:Tahoma,Arial,sans-serif}
+[dir="rtl"] .hero h1,
+[dir="rtl"] .section-title,
+[dir="rtl"] .roster-heading h2{letter-spacing:normal}
+[dir="rtl"] .player-role{text-align:left}
+[dir="rtl"] .player:hover{transform:translateX(-4px)}
+[dir="rtl"] .emblem-caption{letter-spacing:2px}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+  .nav-links{gap:18px}
+  .hero-inner{grid-template-columns:1fr 1fr}
+  .hero-art{min-height:390px}
+  .about-grid{gap:35px}
+  .roster-layout{grid-template-columns:1fr 1.2fr}
+  .roster-feature{min-height:420px;padding:25px}
+  .player{padding:17px;grid-template-columns:40px 1fr auto}
+  .player-name{font-size:15px}
 }
-@media(max-width:600px){
- header{padding:20px 0}
- .menu-btn{display:block}
- .nav-links{
-  display:none;position:absolute;top:65px;left:0;width:100%;
-  background:#191a1c;padding:25px 7%;
-  flex-direction:column;align-items:flex-start;
-  border-bottom:1px solid var(--line)
- }
- .nav-links.open{display:flex}
- .hero h1{font-size:67px}
- .hero h1 span{font-size:17px}
- .contact-box{padding:27px}
+@media(max-width:700px){
+  .header{padding:17px 0}
+  .menu-toggle{display:block}
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:70px;left:0;
+    width:100%;
+    padding:25px 7%;
+    background:#111315;
+    border-bottom:1px solid var(--line);
+    flex-direction:column;
+    align-items:flex-start;
+    gap:25px;
+  }
+  .nav-links.open{display:flex}
+  .hero{
+    height:auto;
+    min-height:950px;
+    max-height:none;
+    padding:140px 0 70px;
+  }
+  .hero-inner{grid-template-columns:1fr;gap:0}
+  .hero h1{font-size:clamp(75px,18vw,115px)}
+  .hero-art{min-height:330px}
+  .emblem{width:min(340px,90%)}
+  .hero-index{display:none}
+  section.content-section{padding:85px 0}
+  .section-top{align-items:flex-start}
+  .about-grid{grid-template-columns:1fr}
+  .about-visual{min-height:250px}
+  .about-visual strong{font-size:70px}
+  .roster-layout{grid-template-columns:1fr}
+  .roster-feature{min-height:280px}
+  .roster-feature::before{font-size:230px}
+  .values-grid{grid-template-columns:1fr}
+  .value-card{min-height:160px}
+  .value-card h3{margin-top:28px}
+  .news-card{grid-template-columns:1fr auto;gap:15px}
+  .news-date{grid-column:1/-1}
+  .contact-panel{padding:35px 25px;align-items:flex-start;flex-direction:column}
+}
+@media(max-width:420px){
+  .container{width:90%}
+  .hero h1{letter-spacing:-6px}
+  .hero h1 span{letter-spacing:9px}
+  .hero-slogan{font-size:12px;letter-spacing:3px}
+  .player{grid-template-columns:30px 1fr;gap:10px}
+  .player-role{grid-column:2;text-align:left;margin-top:-5px}
+  .stats{gap:7px}
+  .stat{padding:15px 8px}
+  .stat strong{font-size:24px}
+  .stat span{font-size:8px}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    transition:none!important;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header id="header">
- <div class="container nav">
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container nav">
 
-  <a class="logo" href="#home">XDR <span>ESPORTS</span></a>
+    <a href="#home" class="brand">
+      XDR
+      <small>ESPORTS</small>
+    </a>
 
-  <nav class="nav-links" id="navLinks">
-   <a href="#home" data-en="HOME" data-fa="خانه">HOME</a>
-   <a href="#about" data-en="ABOUT" data-fa="درباره ما">ABOUT</a>
-   <a href="#teams" data-en="ROSTER" data-fa="روستر">ROSTER</a>
-   <a href="#news" data-en="UPDATES" data-fa="اخبار">UPDATES</a>
-   <a href="#contact" data-en="CONTACT" data-fa="ارتباط">CONTACT</a>
-  </nav>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" data-en="HOME" data-fa="خانه">HOME</a>
+      <a href="#about" data-en="ABOUT" data-fa="درباره ما">ABOUT</a>
+      <a href="#roster" data-en="ROSTER" data-fa="روستر">ROSTER</a>
+      <a href="#values" data-en="IDENTITY" data-fa="هویت">IDENTITY</a>
+      <a href="#news" data-en="NEWS" data-fa="اخبار">NEWS</a>
+      <a href="#contact" data-en="CONTACT" data-fa="ارتباط">CONTACT</a>
+    </nav>
 
-  <div style="display:flex;align-items:center;gap:15px">
-   <button class="lang-btn" id="language">FA</button>
-   <button class="menu-btn" id="menu">☰</button>
+    <div class="nav-right">
+      <button class="lang" id="language">FA</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    </div>
+
   </div>
-
- </div>
 </header>
 
 <main>
 
-<!-- HOME -->
+<!-- HERO -->
 <section class="hero" id="home">
- <div class="container hero-content">
+  <div class="container hero-inner">
 
-  <div>
-   <div class="eyebrow" data-en="INDEPENDENT ESPORTS ORGANIZATION" data-fa="سازمان مستقل ورزش‌های الکترونیک">
-    INDEPENDENT ESPORTS ORGANIZATION
-   </div>
+    <div class="hero-copy">
 
-   <h1>XDR <span>ESPORTS</span></h1>
+      <div class="kicker"
+        data-en="INDEPENDENT ESPORTS ORGANIZATION"
+        data-fa="سازمان مستقل ورزش‌های الکترونیک">
+        INDEPENDENT ESPORTS ORGANIZATION
+      </div>
 
-   <div class="tagline" data-en="BEYOND THE ORDINARY." data-fa="فراتر از معمول.">
-    BEYOND THE ORDINARY.
-   </div>
+      <h1>XDR<span>ESPORTS</span></h1>
 
-   <p class="description"
-    data-en="A distinct identity. A competitive mindset. XDR is built around ambition, discipline and a standard of its own."
-    data-fa="هویتی متمایز، ذهنیتی رقابتی و نگاهی مستقل. XDR با تکیه بر جاه‌طلبی، نظم و استانداردی ویژه شکل گرفته است.">
-    A distinct identity. A competitive mindset. XDR is built around ambition, discipline and a standard of its own.
-   </p>
+      <div class="hero-slogan">BEYOND THE ORDINARY.</div>
 
-   <div class="hero-buttons">
-    <a href="#teams" class="btn primary" data-en="EXPLORE ROSTER" data-fa="مشاهده روستر">EXPLORE ROSTER</a>
-    <a href="#about" class="btn" data-en="ABOUT XDR" data-fa="درباره XDR">ABOUT XDR</a>
-   </div>
+      <p class="hero-description"
+        data-en="A distinct identity. A competitive mindset. Built on ambition, discipline and the pursuit of excellence."
+        data-fa="هویتی متمایز، ذهنیتی رقابتی و سازمانی ساخته‌شده بر پایه جاه‌طلبی، نظم و تلاش برای پیشرفت.">
+        A distinct identity. A competitive mindset. Built on ambition, discipline and the pursuit of excellence.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#roster" class="btn btn-primary">
+          <span data-en="EXPLORE OUR ROSTER" data-fa="مشاهده روستر">EXPLORE OUR ROSTER</span>
+          <span class="arrow">↗</span>
+        </a>
+
+        <a href="#about" class="btn">
+          <span data-en="DISCOVER XDR" data-fa="آشنایی با XDR">DISCOVER XDR</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="hero-art">
+
+      <div class="emblem">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+
+          <defs>
+            <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e2e0d8"/>
+              <stop offset="35%" stop-color="#777c7c"/>
+              <stop offset="65%" stop-color="#c5c2b9"/>
+              <stop offset="100%" stop-color="#53595a"/>
+            </linearGradient>
+            <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#d0b28a"/>
+              <stop offset="100%" stop-color="#72583d"/>
+            </linearGradient>
+          </defs>
+
+          <circle cx="250" cy="250" r="210" fill="none" stroke="#8e775c" stroke-opacity=".35" stroke-width="1"/>
+          <circle cx="250" cy="250" r="185" fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="1" stroke-dasharray="3 10"/>
+
+          <path d="M250 45 L420 145 L420 355 L250 455 L80 355 L80 145 Z"
+            fill="none" stroke="url(#metal)" stroke-width="3"/>
+
+          <path d="M250 80 L385 160 L385 340 L250 420 L115 340 L115 160 Z"
+            fill="rgba(255,255,255,.025)" stroke="url(#gold)" stroke-width="2"/>
+
+          <path d="M155 175 L225 175 L275 250 L225 325 L155 325 L210 250 Z"
+            fill="none" stroke="url(#metal)" stroke-width="10" stroke-linejoin="round"/>
+
+          <path d="M275 175 L345 175 L290 250 L345 325 L275 325 L225 250 Z"
+            fill="none" stroke="url(#metal)" stroke-width="10" stroke-linejoin="round"/>
+
+          <path d="M250 110 L250 155 M250 345 L250 390"
+            stroke="url(#gold)" stroke-width="2"/>
+
+          <path d="M110 250 L145 250 M355 250 L390 250"
+            stroke="url(#gold)" stroke-width="2"/>
+
+          <circle cx="250" cy="250" r="8" fill="#c2a37c"/>
+
+        </svg>
+
+        <div class="emblem-caption">XDR · ESTABLISH YOUR IDENTITY</div>
+      </div>
+
+      <div class="hero-index">01 — XDR ESPORTS</div>
+
+    </div>
+
   </div>
-
-  <div class="art">
-   <div class="orbit"></div>
-   <div class="structure"><div class="structure-line"></div></div>
-  </div>
-
- </div>
 </section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="container ticker-track">
+    <span>DISCIPLINE</span>
+    <span>IDENTITY</span>
+    <span>COMPETITION</span>
+    <span>EXCELLENCE</span>
+    <span>XDR ESPORTS</span>
+  </div>
+</div>
 
 <!-- ABOUT -->
-<section class="about" id="about">
- <div class="container">
+<section class="content-section" id="about">
+  <div class="container">
 
-  <div class="section-label" data-en="THE ORGANIZATION" data-fa="سازمان">THE ORGANIZATION</div>
+    <div class="section-top">
+      <div>
+        <div class="section-label">01 / THE ORGANIZATION</div>
+        <h2 class="section-title"
+          data-en="MORE THAN<br> A NAME."
+          data-fa="فراتر از<br> یک نام.">
+          MORE THAN<br> A NAME.
+        </h2>
+      </div>
+      <div class="section-number">01 — 04</div>
+    </div>
 
-  <div class="about-content">
-   <div class="about-mark">XDR</div>
+    <div class="about-grid">
 
-   <div>
-    <h2 class="section-title" data-en="Built with purpose." data-fa="با هدفی روشن.">Built with purpose.</h2>
+      <div class="about-visual">
+        <strong>XDR</strong>
+      </div>
 
-    <p class="about-text"
-     data-en="We believe a strong organization is defined by more than results. It is shaped by its people, its standards and the identity it builds over time. <strong>XDR ESPORTS</strong> is committed to developing competitive teams while creating a unified presence in esports."
-     data-fa="باور داریم یک سازمان قدرتمند فقط با نتایج تعریف نمی‌شود؛ بلکه با اعضا، استانداردها و هویتی که می‌سازد شناخته می‌شود. <strong>XDR ESPORTS</strong> با هدف توسعه تیم‌های رقابتی و ساخت حضوری یکپارچه در دنیای esports فعالیت می‌کند.">
-     We believe a strong organization is defined by more than results. It is shaped by its people, its standards and the identity it builds over time. <strong>XDR ESPORTS</strong> is committed to developing competitive teams while creating a unified presence in esports.
-    </p>
-   </div>
+      <div class="about-copy">
+
+        <div class="section-label"
+          data-en="OUR PHILOSOPHY"
+          data-fa="فلسفه ما">
+          OUR PHILOSOPHY
+        </div>
+
+        <h3 class="section-title"
+          data-en="Built with purpose."
+          data-fa="با هدفی روشن.">
+          Built with purpose.
+        </h3>
+
+        <p
+          data-en="XDR ESPORTS is an independent esports organization focused on building a recognizable identity and a competitive environment. We believe that consistency, teamwork and discipline are the foundation of long-term progress. Our ambition goes beyond a single result — we are building something that lasts."
+          data-fa="XDR ESPORTS یک سازمان مستقل ورزش‌های الکترونیک است که بر ساخت هویتی متمایز و محیطی رقابتی تمرکز دارد. باور داریم استمرار، کار تیمی و نظم پایه‌های پیشرفت بلندمدت هستند. جاه‌طلبی ما فراتر از یک نتیجه است؛ ما در حال ساختن چیزی ماندگار هستیم.">
+          XDR ESPORTS is an independent esports organization focused on building a recognizable identity and a competitive environment. We believe that consistency, teamwork and discipline are the foundation of long-term progress. Our ambition goes beyond a single result — we are building something that lasts.
+        </p>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>01</strong>
+            <span data-en="CURRENT ROSTER" data-fa="روستر فعلی">CURRENT ROSTER</span>
+          </div>
+
+          <div class="stat">
+            <strong>04</strong>
+            <span data-en="ROSTER PLAYERS" data-fa="بازیکن">ROSTER PLAYERS</span>
+          </div>
+
+          <div class="stat">
+            <strong>01</strong>
+            <span data-en="GAME TITLE" data-fa="رشته رقابتی">GAME TITLE</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
- </div>
 </section>
 
-<!-- ONLY CURRENT ROSTER -->
-<section id="teams">
- <div class="container">
+<!-- ROSTER -->
+<section class="content-section roster-section" id="roster">
+  <div class="container">
 
-  <div class="section-label" data-en="OUR ROSTER" data-fa="روستر ما">OUR ROSTER</div>
+    <div class="section-label">02 / COMPETITIVE DIVISION</div>
 
-  <h2 class="section-title">XDR MANIFEST</h2>
+    <div class="roster-heading">
+      <div>
+        <h2>XDR MANIFEST</h2>
+        <p>PUBG MOBILE · MAIN ROSTER</p>
+      </div>
+      <div class="section-number">THE LINEUP — 04</div>
+    </div>
 
-  <p class="section-desc" data-en="PUBG MOBILE · MAIN ROSTER" data-fa="پابجی موبایل · روستر اصلی">
-   PUBG MOBILE · MAIN ROSTER
-  </p>
+    <div class="roster-layout">
 
-  <div class="roster-grid">
+      <div class="roster-feature">
+        <div class="roster-feature-top">
+          <span class="roster-tag">OFFICIAL ROSTER</span>
+        </div>
 
-   <article class="player">
-    <div class="player-role">01 / IGL</div>
-    <h3>xdrDUEL ENZO</h3>
-   </article>
+        <div class="roster-feature-bottom">
+          <h3>MANIFEST</h3>
+          <p>XDR ESPORTS / PUBG MOBILE</p>
+        </div>
+      </div>
 
-   <article class="player">
-    <div class="player-role">02 / FRAGGER</div>
-    <h3>xdrCLOSE</h3>
-   </article>
+      <div class="player-list">
 
-   <article class="player">
-    <div class="player-role">03 / SUPPORT</div>
-    <h3>xdrVLONE</h3>
-   </article>
+        <article class="player">
+          <div class="player-number">01</div>
+          <div class="player-name">xdrDUEL ENZO</div>
+          <div class="player-role">IGL</div>
+        </article>
 
-   <article class="player">
-    <div class="player-role">04 / F.MAN</div>
-    <h3>xdrDEXTER</h3>
-   </article>
+        <article class="player">
+          <div class="player-number">02</div>
+          <div class="player-name">xdrCLOSE</div>
+          <div class="player-role">FRAG</div>
+        </article>
 
+        <article class="player">
+          <div class="player-number">03</div>
+          <div class="player-name">xdrVLONE</div>
+          <div class="player-role">SUPPORT</div>
+        </article>
+
+        <article class="player">
+          <div class="player-number">04</div>
+          <div class="player-name">xdrDEXTER</div>
+          <div class="player-role">F.MAN</div>
+        </article>
+
+      </div>
+    </div>
   </div>
- </div>
+</section>
+
+<!-- IDENTITY -->
+<section class="content-section" id="values">
+  <div class="container">
+
+    <div class="section-top">
+      <div>
+        <div class="section-label">03 / WHAT DEFINES US</div>
+        <h2 class="section-title"
+          data-en="OUR IDENTITY."
+          data-fa="هویت ما.">
+          OUR IDENTITY.
+        </h2>
+      </div>
+      <div class="section-number">03 — 04</div>
+    </div>
+
+    <div class="values-grid">
+
+      <article class="value-card">
+        <div class="value-no">01 / DISCIPLINE</div>
+        <h3 data-en="DISCIPLINE" data-fa="نظم">DISCIPLINE</h3>
+        <p
+          data-en="Consistency and commitment in every part of the journey."
+          data-fa="استمرار و تعهد در تمام مراحل مسیر.">
+          Consistency and commitment in every part of the journey.
+        </p>
+      </article>
+
+      <article class="value-card">
+        <div class="value-no">02 / UNITY</div>
+        <h3 data-en="UNITY" data-fa="اتحاد">UNITY</h3>
+        <p
+          data-en="A shared vision built through trust and teamwork."
+          data-fa="چشم‌اندازی مشترک که با اعتماد و کار تیمی ساخته می‌شود.">
+          A shared vision built through trust and teamwork.
+        </p>
+      </article>
+
+      <article class="value-card">
+        <div class="value-no">03 / AMBITION</div>
+        <h3 data-en="AMBITION" data-fa="جاه‌طلبی">AMBITION</h3>
+        <p
+          data-en="Always seeking progress and setting a higher standard."
+          data-fa="همیشه در جست‌وجوی پیشرفت و تعیین استانداردی بالاتر.">
+          Always seeking progress and setting a higher standard.
+        </p>
+      </article>
+
+    </div>
+  </div>
 </section>
 
 <!-- NEWS -->
-<section class="news" id="news">
- <div class="container">
+<section class="content-section news-section" id="news">
+  <div class="container">
 
-  <div class="section-label" data-en="LATEST FROM XDR" data-fa="تازه‌های XDR">
-   LATEST FROM XDR
+    <div class="section-top">
+      <div>
+        <div class="section-label">04 / LATEST FROM XDR</div>
+        <h2 class="section-title"
+          data-en="NEWS & UPDATES."
+          data-fa="اخبار و اطلاعیه‌ها.">
+          NEWS & UPDATES.
+        </h2>
+      </div>
+      <div class="section-number">04 — 04</div>
+    </div>
+
+    <div class="news-card">
+
+      <div class="news-date">XDR / OFFICIAL</div>
+
+      <div>
+        <h3
+          data-en="The next chapter starts here."
+          data-fa="فصل بعدی از اینجا آغاز می‌شود.">
+          The next chapter starts here.
+        </h3>
+
+        <p
+          data-en="Official announcements, competitive updates and organization news will be published here."
+          data-fa="اطلاعیه‌های رسمی، اخبار رقابت‌ها و تازه‌های سازمان از این بخش منتشر خواهند شد.">
+          Official announcements, competitive updates and organization news will be published here.
+        </p>
+      </div>
+
+      <div class="news-arrow">↗</div>
+
+    </div>
   </div>
-
-  <h2 class="section-title" data-en="Updates & announcements." data-fa="اخبار و اطلاعیه‌ها.">
-   Updates & announcements.
-  </h2>
-
-  <div class="news-card">
-   <h3 data-en="The next chapter starts here." data-fa="فصل بعدی از اینجا آغاز می‌شود.">
-    The next chapter starts here.
-   </h3>
-
-   <p data-en="Stay tuned for official XDR announcements." data-fa="منتظر اطلاعیه‌های رسمی XDR باشید.">
-    Stay tuned for official XDR announcements.
-   </p>
-  </div>
-
- </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
- <div class="container">
+<section class="content-section" id="contact">
+  <div class="container">
 
-  <div class="contact-box">
-   <div class="section-label" data-en="CONNECT WITH XDR" data-fa="ارتباط با XDR">
-    CONNECT WITH XDR
-   </div>
+    <div class="contact-panel">
 
-   <h2 data-en="Every journey needs a starting point." data-fa="هر مسیری، نقطه شروعی دارد.">
-    Every journey needs a starting point.
-   </h2>
+      <div>
+        <div class="section-label"
+          data-en="CONNECT WITH XDR"
+          data-fa="ارتباط با XDR">
+          CONNECT WITH XDR
+        </div>
 
-   <p class="section-desc" data-en="Official contact channels will be announced soon." data-fa="راه‌های ارتباطی رسمی به‌زودی اعلام خواهند شد.">
-    Official contact channels will be announced soon.
-   </p>
+        <h2
+          data-en="LET'S BUILD<br>SOMETHING GREAT."
+          data-fa="بیایید چیزی<br>بزرگ بسازیم.">
+          LET'S BUILD<br>SOMETHING GREAT.
+        </h2>
+
+        <p
+          data-en="For official announcements and future collaboration opportunities, stay connected with XDR ESPORTS."
+          data-fa="برای اطلاع از اخبار رسمی و فرصت‌های همکاری در آینده، همراه XDR ESPORTS باشید.">
+          For official announcements and future collaboration opportunities, stay connected with XDR ESPORTS.
+        </p>
+      </div>
+
+      <a href="#home" class="btn btn-primary">
+        <span data-en="BACK TO TOP" data-fa="بازگشت به بالا">BACK TO TOP</span>
+        <span class="arrow">↑</span>
+      </a>
+
+    </div>
   </div>
-
- </div>
 </section>
 
 </main>
 
-<footer>
- <div class="container footer-content">
-  <strong>XDR ESPORTS</strong>
-  <span>© <span id="year"></span> XDR ESPORTS. ALL RIGHTS RESERVED.</span>
-  <span>BEYOND THE ORDINARY.</span>
- </div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+
+    <div class="footer-brand">XDR <span>ESPORTS</span></div>
+
+    <div class="footer-copy">
+      © <span id="year"></span> XDR ESPORTS. ALL RIGHTS RESERVED.
+    </div>
+
+    <a href="#home" class="back-top">BACK TO TOP ↑</a>
+
+  </div>
 </footer>
 
 <script>
-const header=document.getElementById("header");
-const navLinks=document.getElementById("navLinks");
+const header = document.getElementById("header");
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+const languageButton = document.getElementById("language");
 
-window.addEventListener("scroll",()=>{
- header.classList.toggle("scrolled",window.scrollY>30);
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", window.scrollY > 35);
 });
 
-document.getElementById("menu").addEventListener("click",()=>{
- navLinks.classList.toggle("open");
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+  menuToggle.textContent = navLinks.classList.contains("open") ? "×" : "☰";
 });
 
-navLinks.querySelectorAll("a").forEach(link=>{
- link.addEventListener("click",()=>{
-  navLinks.classList.remove("open");
- });
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.textContent = "☰";
+  });
 });
 
-document.getElementById("year").textContent=new Date().getFullYear();
+let language = "en";
 
-let currentLanguage="en";
+languageButton.addEventListener("click", () => {
+  language = language === "en" ? "fa" : "en";
 
-document.getElementById("language").addEventListener("click",()=>{
- currentLanguage=currentLanguage==="en"?"fa":"en";
+  document.documentElement.lang = language;
+  document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
 
- document.documentElement.lang=currentLanguage;
- document.documentElement.dir=currentLanguage==="fa"?"rtl":"ltr";
+  document.querySelectorAll("[data-en]").forEach(element => {
+    const newText = element.getAttribute("data-" + language);
+    if (newText !== null) {
+      element.innerHTML = newText;
+    }
+  });
 
- document.getElementById("language").textContent=
-  currentLanguage==="en"?"FA":"EN";
-
- document.querySelectorAll("[data-en]").forEach(element=>{
-  const content=element.getAttribute("data-"+currentLanguage);
-  if(content!==null) element.innerHTML=content;
- });
+  languageButton.textContent = language === "en" ? "FA" : "EN";
 });
+
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
 </body>
